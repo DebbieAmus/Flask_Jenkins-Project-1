@@ -1,12 +1,20 @@
 ---
-- name: Copy application files
-  copy:
-    src: "/tmp/flask-app.tar.gz"
-    dest: "/home/centos/flask-app.tar.gz"
+- name: Copy Flask App to EC2
+  hosts: app
+  become: true  # Run as root
 
-- name: Extract application
-  unarchive:
-    src: "/home/centos/flask-app.tar.gz"
-    dest: "/home/centos/"
-    remote_src: yes
+  tasks:
+    - name: Copy application files
+      copy:
+        src: "/tmp/flask-app.tar.gz"
+        dest: "/home/centos/flask-app.tar.gz"
+        owner: centos
+        group: centos
+        mode: '0644'
+
+    - name: Extract application
+      unarchive:
+        src: "/home/centos/flask-app.tar.gz"
+        dest: "/home/centos/"
+        remote_src: yes
 ...
