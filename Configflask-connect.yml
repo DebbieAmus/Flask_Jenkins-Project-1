@@ -1,5 +1,4 @@
 ---
-# tasks file for Config-connect
 - name: Set Environment Variables for Flask App
   copy:
     dest: /etc/profile.d/flask_env.sh

@@ -1,5 +1,4 @@
 ---
-# tasks file for Configure_app
 - name: Install PostgreSQL
   yum:
     name: postgresql-server

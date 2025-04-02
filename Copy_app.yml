@@ -1,5 +1,4 @@
 ---
-# tasks file for Copy_app
 - name: Copy application files
   copy:
     src: "/tmp/flask-app.tar.gz"
