@@ -1,2 +1,13 @@
 ---
 # tasks file for PostgreSQL
+- name: Install PostgreSQL
+  yum:
+    name: postgresql-server
+  become: true
+
+- name: Init and start DB
+  shell: |
+    postgresql-setup initdb
+    systemctl enable postgresql
+    systemctl start postgresql
+...

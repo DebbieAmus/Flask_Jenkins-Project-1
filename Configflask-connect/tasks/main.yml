@@ -1,0 +1,19 @@
+---
+# tasks file for Config-connect
+- name: Set Environment Variables for Flask App
+  copy:
+    dest: /etc/profile.d/flask_env.sh
+    owner: root
+    group: root
+    mode: '0644'
+    content: |
+      export DB_HOST=172.31.25.0
+      export DB_NAME=mydb
+      export DB_USER=myuser
+      export DB_PASS=mypassword
+      export FLASK_APP=/home/centos/app.py
+      export FLASK_ENV=production
+
+- name: Apply Environment Variables
+  shell: source /etc/profile.d/flask_env.sh
+...
