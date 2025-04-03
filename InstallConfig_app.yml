@@ -1,11 +1,19 @@
 ---
 - name: Install PostgreSQL
   hosts: all
-  become: true  
+  become: true
 
   tasks:
-    - name: Install PostgreSQL using apt
+    - name: Install PostgreSQL on RHEL-based systems
+      yum:
+        name: postgresql-server
+        state: present
+      when: ansible_facts.pkg_mgr == "yum" or ansible_facts.pkg_mgr == "dnf"
+
+    - name: Install PostgreSQL on Debian-based systems
       apt:
         name: postgresql
         state: present
+        update_cache: yes
+      when: ansible_facts.pkg_mgr == "apt"
 ...
