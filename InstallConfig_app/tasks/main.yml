@@ -1,7 +1,6 @@
 ---
-# tasks file for Configure_app
 - name: Install PostgreSQL
-  yum:
+  apt:
     name: postgresql-server
   become: true
 

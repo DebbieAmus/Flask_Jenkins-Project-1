@@ -1,11 +1,11 @@
 ---
 - name: Install PostgreSQL
   hosts: all
-  become: true  # Run as sudo
+  become: true  
 
   tasks:
-    - name: Install PostgreSQL using yum
-      yum:
+    - name: Install PostgreSQL using apt
+      apt:
         name: postgresql
         state: present
 ...
