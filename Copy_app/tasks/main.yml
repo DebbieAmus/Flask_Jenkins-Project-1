@@ -1,15 +1,7 @@
----
-- name: Copy application files
-  copy:
-    src: "/tmp/flask-app.tar.gz"
-    dest: "/home/centos/flask-app.tar.gz"
-    owner: centos
-    group: centos
-    mode: '0644'
-
-- name: Extract application
-  unarchive:
-    src: "/home/centos/flask-app.tar.gz"
-    dest: "/home/centos/"
-    remote_src: yes
+- hosts: all
+  tasks:
+    - name: Copy application files
+      copy:
+        src: /path/to/source
+        dest: /path/to/destination
 ...
