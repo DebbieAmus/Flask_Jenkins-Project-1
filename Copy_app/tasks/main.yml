@@ -1,7 +1,12 @@
+---
 - hosts: all
+  become: true  
   tasks:
-    - name: Copy application files
+    - name: Copy application files to EC2 instance
       copy:
-        src: /path/to/source
-        dest: /path/to/destination
+        src: /home/ec2-user/Flask_Jenkins-Project-1/app/
+        dest: /var/www/flask_app/
+        owner: ec2-user
+        group: ec2-user
+        mode: "0755"
 ...
