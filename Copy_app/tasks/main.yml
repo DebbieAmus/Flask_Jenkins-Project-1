@@ -1,12 +1,14 @@
 ---
-- hosts: all
-  become: true  
-  tasks:
-    - name: Copy application files to EC2 instance
-      copy:
-        src: /home/ec2-user/Flask_Jenkins-Project-1/app/
-        dest: /var/www/flask_app/
-        owner: ec2-user
-        group: ec2-user
-        mode: "0755"
+- name: Copy application files
+  copy:
+    src: flask-app.tar.gz
+    dest: /home/centos/flask-app.tar.gz
+  become: true
+
+- name: Extract application
+  unarchive:
+    src: /home/centos/flask-app.tar.gz
+    dest: /home/centos/
+    remote_src: yes
+  become: true
 ...
