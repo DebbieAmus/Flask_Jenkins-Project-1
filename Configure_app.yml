@@ -1,7 +1,7 @@
 ---
-- name: Deploy Flask app
+- name: Configure Flask App
   hosts: app
   become: true
   roles:
-    - flask
+    - flask app
 ...
