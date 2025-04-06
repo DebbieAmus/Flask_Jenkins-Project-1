@@ -1,0 +1,9 @@
+---
+---
+- name: Configure Flask App
+  hosts: app
+  become: yes
+
+  roles:
+    - flask_app
+...
