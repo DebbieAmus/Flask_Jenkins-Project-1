@@ -1,7 +1,19 @@
 ---
-- name: Install and Configure PostgreSQL
-  hosts: all
-  become: true
-  roles:
-    - postgresql
+- name: Install PostgreSQL
+  hosts: db
+  become: yes
+
+  tasks:
+    - name: Install PostgreSQL on RedHat/CentOS
+      yum:
+        name: postgresql-server
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Install PostgreSQL on Debian/Ubuntu
+      apt:
+        name: postgresql
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
 ...

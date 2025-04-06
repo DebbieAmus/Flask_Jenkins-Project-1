@@ -1,7 +1,12 @@
 ---
-- name: Deploy Flask app
+- name: Set up the app
   hosts: app
-  become: true
-  roles:
-    - flask
+  become: yes
+
+  tasks:
+    - name: Install Python 3 and pip
+      package:
+        name: python3
+        state: present
+
 ...
